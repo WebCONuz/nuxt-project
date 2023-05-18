@@ -11,10 +11,7 @@ definePageMeta({
 
 <template>
   <div>
-    <h1 class="text-center text-2xl font-bold my-6">{{ product.title }}</h1>
-    <p class="text-center text-lg text-green-500 mb-6">
-      Product ID is equal {{ product.id }}
-    </p>
+    <ProductDetails :product="product" />
   </div>
 </template>
 
