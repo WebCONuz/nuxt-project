@@ -38,4 +38,7 @@
 .router-link-exact-active {
   color: #12b488;
 }
+.btn.router-link-exact-active {
+  color: white;
+}
 </style>

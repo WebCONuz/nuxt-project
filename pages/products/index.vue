@@ -3,8 +3,18 @@ definePageMeta({
   layout: "products",
 });
 
-// fetch the products
-const { data: products } = await useFetch("https://fakestoreapi.com/products");
+const products = ref(null);
+onMounted(async () => {
+  try {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((json) => {
+        products.value = json;
+      });
+  } catch (e) {
+    console.log(e);
+  }
+});
 </script>
 
 <template>
@@ -13,9 +23,9 @@ const { data: products } = await useFetch("https://fakestoreapi.com/products");
       Hello This is Product Page.
     </h1>
     <div class="grid grid-cols-4 gap-5">
-      <diV v-for="p in products">
-        <ProductCard :product="p" />
-      </diV>
+      <template v-for="item in products" :key="item?.id">
+        <ProductCard :product="item" />
+      </template>
     </div>
   </div>
 </template>
